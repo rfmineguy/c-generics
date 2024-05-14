@@ -1,3 +1,5 @@
+#include <stdbool.h>
+
 #define JOIN2(a, b) a ## b
 #define JOIN3(a, b, c) a ## b ## c
 #define JOIN4(a, b, c, d) a ## b ## c ## d
