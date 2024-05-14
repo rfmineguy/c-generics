@@ -69,7 +69,7 @@ typedef struct HT_LL_STRUCT_NAME(key_name, value_name) {\
 		else {\
 			HT_LL_STRUCT_NAME(key_name, value_name)* node = ht->buckets[hash];\
 			while (node && JOIN5(ht_, key_name, _, value_name, _cmpdef)(node->key, key)) node = node->next;\
-			if (!node) return default;\
+			if (!node) return (default);\
 			return node->val;\
 		}\
 	}\
