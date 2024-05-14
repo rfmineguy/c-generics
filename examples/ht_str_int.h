@@ -5,9 +5,13 @@
 #define BUCKET_COUNT 10
 HT_DEF(str, int, const char*, int);
 HT_PUT_PROTO(str, int, const char*, int);
+HT_CONTAINS_KEY_PROTO(str, int, const char*, int);
+HT_CONTAINS_VALUE_PROTO(str, int, const char*, int);
+HT_REMOVE_KEY_PROTO(str, int, const char*, int);
 HT_GET_PROTO(str, int, const char*, int);
 HT_HASH_PROTO(str, int, const char*, int);
 HT_FREE_PROTO(str, int, const char*, int);
-HT_CMP_PROTO(str, int, const char*, int);
+HT_CMP_KEY_PROTO(str, int, const char*, int);
+HT_CMP_VALUE_PROTO(str, int, const char*, int);
 
 #endif
