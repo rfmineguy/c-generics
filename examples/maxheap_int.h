@@ -1,6 +1,6 @@
 #ifndef INT_MAX_HEAP_H
 #define INT_MAX_HEAP_H
-#include "../cmaxheap_tplit.h"
+#include "../templates/cmaxheap_tplit.h"
 
 #define CAPACITY 10
 MAX_HEAP_DEF(int);

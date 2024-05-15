@@ -1,7 +1,7 @@
 #ifndef HT_STR_STRUCT_H
 #define HT_STR_STRUCT_H
 
-#include "../chash_tplt.h" // This should point to wherever you have the chash_tplt file
+#include "../templates/chash_tplt.h" // This should point to wherever you have the chash_tplt file
 
 typedef struct {
 	int x;
