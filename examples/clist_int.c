@@ -1,5 +1,9 @@
 #include "clist_int.h"
+#include <stdio.h>
 
+LL_PRINT_IMPL(int) {
+	printf("%d", val);
+}
 LL_CMP_VALUE_IMPL(int) {
 	return val1 == val2;
 }
