@@ -11,7 +11,10 @@ Macros
 # Usage
 This library is NOT a single header. The usage is that you still have a seperate translation unit per generic type, but making those translation units is streamlined via the C macro system.
 
-| See examples/ directory for a few premade templates |
+| See templates/ directory for a few premade templates |
+|-----------------------------------------------------|
+
+| See examples/ directory to learn how templates work |
 |-----------------------------------------------------|
 
 # Contributing
