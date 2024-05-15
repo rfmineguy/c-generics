@@ -1,10 +1,38 @@
 #include "ht_str_int.h"
 #include "ht_str_struct.h"
 #include "maxheap_int.h"
+#include "clist_int.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 #include <stdbool.h>
+
+void list_int() {
+	ll_int list;
+	ll_int_append(&list, 3);
+	ll_int_append(&list, 5);
+	ll_int_append(&list, 6);
+	ll_int_prepend(&list, 6);
+	ll_int_node* n = list.head;
+	printf("ll_int\n");
+	while (n) {
+		printf("%d\n", n->val);
+		n = n->next;
+	}
+	if (ll_int_contains(&list, 3)) {
+		printf("list contains 3\n");
+	}
+	ll_int_delete(&list, 5);
+	n = list.head;
+	printf("ll_int\n");
+	while (n) {
+		printf("%d\n", n->val);
+		n = n->next;
+	}
+	if (!ll_int_contains(&list, 3)) {
+		printf("list doesnt contain 3\n");
+	}
+}
 
 void max_heap_int() {
 	heap_max_int heap;
@@ -67,4 +95,5 @@ int main() {
 	str_int();
 	str_struct();
 	max_heap_int();
+	list_int();
 }
