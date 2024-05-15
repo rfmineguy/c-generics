@@ -1,9 +1,33 @@
 #include "ht_str_int.h"
 #include "ht_str_struct.h"
+#include "maxheap_int.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 #include <stdbool.h>
+
+void max_heap_int() {
+	heap_max_int heap;
+	heap_max_int_enqueue(&heap, 3);
+	heap_max_int_enqueue(&heap, 9);
+	heap_max_int_enqueue(&heap, 5);
+	heap_max_int_enqueue(&heap, 10);
+	heap_max_int_enqueue(&heap, 4);
+	heap_max_int_enqueue(&heap, 8);
+	for (int i = 0; i < heap.size; i++) {
+		printf("%d, ", heap.data[i]);
+	}
+	printf("\n");
+
+
+	int v;
+	while ((v = heap_max_int_dequeue(&heap)) != -1) {
+		printf("%d\n", v);
+	}
+	for (int i = 0; i < heap.size; i++) {
+		printf("%d, ", heap.data[i]);
+	}
+}
 
 void str_int() {
 	ht_str_int ht = {0};
@@ -42,4 +66,5 @@ void str_struct() {
 int main() {
 	str_int();
 	str_struct();
+	max_heap_int();
 }
