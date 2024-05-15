@@ -13,3 +13,6 @@ This library is NOT a single header. The usage is that you still have a seperate
 
 | See examples/ directory for a few premade templates |
 |-----------------------------------------------------|
+
+# Contributing
+It would be amazing if there are bugs that you submit a Github Issue about it. Please try t be specific about the issue.
