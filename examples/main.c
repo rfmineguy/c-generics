@@ -47,7 +47,7 @@ void max_heap_int() {
 	}
 }
 
-void str_int() {
+void ht_str_int_() {
 	ht_str_int ht = {0};
 	ht_str_int_put(&ht, "test", 9);
 	int v;
@@ -68,7 +68,7 @@ void str_int() {
 	ht_str_int_free(&ht);
 }
 
-void str_struct() {
+void ht_str_struct_() {
 	ht_str_tstruct ht = {0};
 	ht_str_tstruct_put(&ht, "test", (tstruct) {.x = 4,.c = '4',.str="4"});
 	tstruct v;
@@ -82,8 +82,8 @@ void str_struct() {
 }
 
 int main() {
-	str_int();
-	str_struct();
+	ht_str_int_();
+	ht_str_struct_();
 	max_heap_int();
 	list_int();
 }

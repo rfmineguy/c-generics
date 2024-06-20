@@ -16,6 +16,7 @@ HT_PUT_PROTO(str, tstruct, const char*, tstruct);
 HT_CONTAINS_KEY_PROTO(str, tstruct, const char*, tstruct);
 HT_CONTAINS_VALUE_PROTO(str, tstruct, const char*, tstruct);
 HT_GET_PROTO(str, tstruct, const char*, tstruct);
+HT_GET_PTR_PROTO(str, tstruct, const char*, tstruct);
 HT_HASH_PROTO(str, tstruct, const char*, tstruct);
 HT_FREE_PROTO(str, tstruct, const char*, tstruct);
 HT_CMP_KEY_PROTO(str, tstruct, const char*, tstruct);

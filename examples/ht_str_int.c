@@ -17,6 +17,7 @@ HT_HASH_DEF(str, int, const char*, int) {
 
 	return hash % BUCKET_COUNT;
 }
+HT_GET_PTR_IMPL(str, int, const char*, int)
 HT_GET_IMPL(str, int, const char*, int, -1)
 HT_PUT_IMPL(str, int, const char*, int)
 HT_REMOVE_KEY_IMPL(str, int, const char*, int)

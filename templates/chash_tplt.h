@@ -39,6 +39,9 @@ typedef struct HT_LL_STRUCT_NAME(key_name, value_name) {\
 #define HT_GET_PROTO(key_name, value_name, key_type, value_type)\
 	value_type JOIN5(ht_, key_name, _, value_name, _get)(HT_MAIN_STRUCT_NAME(key_name, value_name)*, key_type)
 
+#define HT_GET_PTR_PROTO(key_name, value_name, key_type, value_type)\
+	HT_LL_STRUCT_NAME(key_name, value_name)* JOIN5(ht_, key_name, _, value_name, _get_ptr)(HT_MAIN_STRUCT_NAME(key_name, value_name)*, key_type)
+
 #define HT_HASH_PROTO(key_name, value_name, key_type, value_type)\
 	int JOIN5(ht_, key_name, _, value_name, _hash)(key_type)\
 
@@ -123,18 +126,26 @@ typedef struct HT_LL_STRUCT_NAME(key_name, value_name) {\
 
 #define HT_GET_IMPL(key_name, value_name, key_type, value_type, default)\
 	value_type JOIN5(ht_, key_name, _, value_name, _get)(HT_MAIN_STRUCT_NAME(key_name, value_name) *ht, key_type key) {\
+		HT_LL_STRUCT_NAME(key_name, value_name)* v = JOIN5(ht_, key_name, _, value_name, _get_ptr)(ht, key);\
+		if (v == NULL) return default;\
+		return v->val;\
+	}\
+
+// HT_LL_STRUCT_NAME(key_name, value_name)* JOIN5(ht_, key_name, _, value_name, _get_ptr)(HT_MAIN_STRUCT_NAME(key_name, value_name)*, key_type)
+#define HT_GET_PTR_IMPL(key_name, value_name, key_type, value_type)\
+	HT_LL_STRUCT_NAME(key_name, value_name)* JOIN5(ht_, key_name, _, value_name, _get_ptr)(HT_MAIN_STRUCT_NAME(key_name, value_name) *ht, key_type key) {\
 		int hash = JOIN5(ht_, key_name, _, value_name, _hash)(key);\
 		if (ht->buckets[hash] == NULL) {\
-			return default;\
+			return NULL;\
 		}\
 		else if (JOIN5(ht_, key_name, _, value_name, _cmpkey)(ht->buckets[hash]->key, key)){\
-			return ht->buckets[hash]->val;\
+			return ht->buckets[hash];\
 		}\
 		else {\
 			HT_LL_STRUCT_NAME(key_name, value_name)* node = ht->buckets[hash];\
 			while (node && !(JOIN5(ht_, key_name, _, value_name, _cmpkey)(node->key, key))) node = node->next;\
-			if (!node) return (default);\
-			return node->val;\
+			if (!node) return NULL;\
+			return node;\
 		}\
 	}\
 

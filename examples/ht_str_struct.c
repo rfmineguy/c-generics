@@ -22,6 +22,7 @@ HT_HASH_DEF(str, tstruct, const char*, tstruct) {
 }
 
 HT_GET_IMPL(str, tstruct, const char*, tstruct, ((tstruct){.x=-1, .c=' ', .str = ""}))
+HT_GET_PTR_IMPL(str, tstruct, const char*, tstruct)
 HT_PUT_IMPL(str, tstruct, const char*, tstruct)
 HT_REMOVE_KEY_IMPL(str, tstruct, const char*, tstruct)
 HT_CONTAINS_KEY_IMPL(str, tstruct, const char*, tstruct)
