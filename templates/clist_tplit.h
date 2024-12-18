@@ -13,10 +13,10 @@
 #define PRINTF printf
 #endif
 #ifndef LL_PRINT_PRE
-#define LL_PRINT_PRE
+#define LL_PRINT_PRE printf
 #endif
 #ifndef LL_PRINT_POST
-#define LL_PRINT_POST
+#define LL_PRINT_POST printf
 #endif
 
 #define JOIN2(a, b) a ## b
