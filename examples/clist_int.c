@@ -1,9 +1,15 @@
+#define PRINTF printf
+#define LL_PRINT_PRE printf
+#define LL_PRINT_POST printf
+#define LL_PRINT_FMT "%d"
+#define LL_PRINT_ARGS n->val
 #include "clist_int.h"
 #include <stdio.h>
+void log_info(const char* fmt, ...) {}
+void log_line_begin(const char* fmt, ...) {}
+void log_line_end(const char* fmt, ...) {}
 
-LL_PRINT_IMPL(int) {
-	printf("%d", val);
-}
+LL_PRINT_IMPL(int, "->")
 LL_CMP_VALUE_IMPL(int) {
 	return val1 == val2;
 }

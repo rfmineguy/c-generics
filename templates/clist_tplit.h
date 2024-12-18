@@ -9,6 +9,15 @@
 #ifndef FREE
 #define FREE free
 #endif
+#ifndef PRINTF
+#define PRINTF printf
+#endif
+#ifndef LL_PRINT_PRE
+#define LL_PRINT_PRE
+#endif
+#ifndef LL_PRINT_POST
+#define LL_PRINT_POST
+#endif
 
 #define JOIN2(a, b) a ## b
 #define JOIN3(a, b, c) a ## b ## c
@@ -120,14 +129,17 @@
 #define LL_CMP_VALUE_IMPL(value_name)\
 	bool JOIN3(ll_, value_name, _cmp)(value_name val1, value_name val2)
 
-#define LL_PRINT_IMPL(value_name)\
+#define LL_PRINT_IMPL(value_name, connector)\
 	void JOIN3(ll_, value_name, _print)(LL_MAIN_STRUCT_NAME(value_name) *list) {\
 		LL_NODE_STRUCT_NAME(value_name)* n = list->head;\
+		LL_PRINT_PRE("List\n");\
 		while (n) {\
-			JOIN3(ll_, value_name, _print_value)(n->val);\
-			printf(" -> ");\
+			PRINTF(LL_PRINT_FMT connector, LL_PRINT_ARGS);\
+			/* JOIN3(ll_, value_name, _print_value)(n->val); */\
+			/* PRINTF(connector); */\
 			n = n->next;\
 		}\
-		printf("NULL\n");\
+		PRINTF("NULL\n");\
+		LL_PRINT_POST("List\n");\
 	}\
-	void JOIN3(ll_, value_name, _print_value)(value_name val)
+	// void JOIN3(ll_, value_name, _print_value)(value_name val)
