@@ -9,10 +9,10 @@
 
 void list_int() {
 	ll_int list;
-	ll_int_append(&list, 3);
-	ll_int_append(&list, 5);
-	ll_int_append(&list, 6);
-	ll_int_prepend(&list, 6);
+	ll_int_pushback(&list, 3);
+	ll_int_pushback(&list, 5);
+	ll_int_pushback(&list, 6);
+	ll_int_pushfront(&list, 6);
 	ll_int_print(&list);
 	if (ll_int_contains(&list, 3)) {
 		printf("list contains 3\n");

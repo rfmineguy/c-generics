@@ -46,11 +46,11 @@
 #define LL_FREE_PROTO(value_name)\
 	void JOIN3(ll_, value_name, _free)(LL_MAIN_STRUCT_NAME(value_name)*)\
 
-#define LL_APPEND_PROTO(value_name)\
-	void JOIN3(ll_, value_name, _append)(LL_MAIN_STRUCT_NAME(value_name)*, value_name)\
+#define LL_PUSH_BACK_PROTO(value_name)\
+	void JOIN3(ll_, value_name, _pushback)(LL_MAIN_STRUCT_NAME(value_name)*, value_name)\
 
-#define LL_PREPEND_PROTO(value_name)\
-	void JOIN3(ll_, value_name, _prepend)(LL_MAIN_STRUCT_NAME(value_name)*, value_name)\
+#define LL_PUSH_FRONT_PROTO(value_name)\
+	void JOIN3(ll_, value_name, _pushfront)(LL_MAIN_STRUCT_NAME(value_name)*, value_name)\
 
 #define LL_DELETE_PROTO(value_name)\
 	void JOIN3(ll_, value_name, _delete)(LL_MAIN_STRUCT_NAME(value_name)*, value_name)\
@@ -75,8 +75,8 @@
 		}\
 	}
 
-#define LL_APPEND_IMPL(value_name)\
-	void JOIN3(ll_, value_name, _append)(LL_MAIN_STRUCT_NAME(value_name) *list, value_name val) {\
+#define LL_PUSH_BACK_IMPL(value_name)\
+	void JOIN3(ll_, value_name, _pushback)(LL_MAIN_STRUCT_NAME(value_name) *list, value_name val) {\
 		if (list->head == NULL || list->tail == NULL) {\
 			list->head = CALLOC(1, sizeof(LL_NODE_STRUCT_NAME(value_name)));\
 			list->tail = list->head;\
@@ -91,8 +91,8 @@
 		}\
 	}
 
-#define LL_PREPEND_IMPL(value_name)\
-	void JOIN3(ll_, value_name, _prepend)(LL_MAIN_STRUCT_NAME(value_name) *list, value_name val) {\
+#define LL_PUSH_FRONT_IMPL(value_name)\
+	void JOIN3(ll_, value_name, _pushfront)(LL_MAIN_STRUCT_NAME(value_name) *list, value_name val) {\
 		if (list->head == NULL || list->tail == NULL) {\
 			list->head = CALLOC(1, sizeof(LL_NODE_STRUCT_NAME(value_name)));\
 			list->tail = list->head;\
