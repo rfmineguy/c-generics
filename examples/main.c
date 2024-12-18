@@ -22,6 +22,7 @@ void list_int() {
 	if (!ll_int_contains(&list, 3)) {
 		printf("list doesnt contain 3\n");
 	}
+	ll_int_free(&list);
 }
 
 void max_heap_int() {
