@@ -1,5 +1,15 @@
 #include <stdlib.h>
 
+#ifndef MALLOC
+#define MALLOC malloc
+#endif
+#ifndef CALLOC
+#define CALLOC calloc
+#endif
+#ifndef FREE
+#define FREE free
+#endif
+
 #define JOIN2(a, b) a ## b
 #define JOIN3(a, b, c) a ## b ## c
 #define JOIN4(a, b, c, d) a ## b ## c ## d
@@ -46,7 +56,7 @@
 #define LL_APPEND_IMPL(value_name)\
 	void JOIN3(ll_, value_name, _append)(LL_MAIN_STRUCT_NAME(value_name) *list, value_name val) {\
 		if (list->head == NULL || list->tail == NULL) {\
-			list->head = calloc(1, sizeof(LL_NODE_STRUCT_NAME(value_name)));\
+			list->head = CALLOC(1, sizeof(LL_NODE_STRUCT_NAME(value_name)));\
 			list->tail = list->head;\
 			list->head->val = val;\
 		}\
@@ -62,12 +72,12 @@
 #define LL_PREPEND_IMPL(value_name)\
 	void JOIN3(ll_, value_name, _prepend)(LL_MAIN_STRUCT_NAME(value_name) *list, value_name val) {\
 		if (list->head == NULL || list->tail == NULL) {\
-			list->head = calloc(1, sizeof(LL_NODE_STRUCT_NAME(value_name)));\
+			list->head = CALLOC(1, sizeof(LL_NODE_STRUCT_NAME(value_name)));\
 			list->tail = list->head;\
 			list->head->val = val;\
 		}\
 		else {\
-			LL_NODE_STRUCT_NAME(value_name)* n = calloc(1, sizeof(*n));\
+			LL_NODE_STRUCT_NAME(value_name)* n = CALLOC(1, sizeof(*n));\
 			n->val = val;\
 			list->head->prev = n;\
 			n->next = list->head;\
@@ -79,7 +89,7 @@
 	void JOIN3(ll_, value_name, _delete)(LL_MAIN_STRUCT_NAME(value_name) *list, value_name val) {\
 		if (list->head == NULL || list->tail == NULL) return;\
 		if (list->head == list->tail && JOIN3(ll_, value_name, _cmp)(list->head->val, val)) {\
-			free(list->head);\
+			FREE(list->head);\
 			list->head = NULL;\
 			list->tail = NULL;\
 			return;\
@@ -91,7 +101,7 @@
 			LL_NODE_STRUCT_NAME(value_name)** next = &n->next;\
 			(*prev)->next = (*next);\
 			(*next)->prev = (*prev);\
-			free(n);\
+			FREE(n);\
 			return;\
 		}\
 	}\
