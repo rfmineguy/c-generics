@@ -2,6 +2,7 @@
 #include <stdbool.h>
 
 LL_DEF(int)
+LL_FREE_PROTO(int);
 LL_PRINT_PROTO(int);
 LL_CMP_VALUE_PROTO(int);
 LL_APPEND_PROTO(int);

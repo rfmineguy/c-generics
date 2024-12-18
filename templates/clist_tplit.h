@@ -43,6 +43,9 @@
 	LL_NODE_DEF(value_name)\
 	LL_STRUCT_DEF(value_name)
 
+#define LL_FREE_PROTO(value_name)\
+	void JOIN3(ll_, value_name, _free)(LL_MAIN_STRUCT_NAME(value_name)*)\
+
 #define LL_APPEND_PROTO(value_name)\
 	void JOIN3(ll_, value_name, _append)(LL_MAIN_STRUCT_NAME(value_name)*, value_name)\
 
@@ -61,6 +64,16 @@
 #define LL_PRINT_PROTO(value_name)\
 	void JOIN3(ll_, value_name, _print_value)(value_name);\
 	void JOIN3(ll_, value_name, _print)(LL_MAIN_STRUCT_NAME(value_name)*)\
+
+#define LL_FREE_IMPL(value_name)\
+	void JOIN3(ll_, value_name, _free)(LL_MAIN_STRUCT_NAME(value_name) *list) {\
+		LL_NODE_STRUCT_NAME(value_name) *n = list->head;\
+		while (n) {\
+			LL_NODE_STRUCT_NAME(value_name) *t = n;\
+			n = n->next;\
+			FREE(t);\
+		}\
+	}
 
 #define LL_APPEND_IMPL(value_name)\
 	void JOIN3(ll_, value_name, _append)(LL_MAIN_STRUCT_NAME(value_name) *list, value_name val) {\
