@@ -52,6 +52,12 @@
 #define LL_PUSH_FRONT_PROTO(value_name)\
 	void JOIN3(ll_, value_name, _pushfront)(LL_MAIN_STRUCT_NAME(value_name)*, value_name)\
 
+#define LL_POP_BACK_PROTO(value_name)\
+	void JOIN3(ll_, value_name, _popback)(LL_MAIN_STRUCT_NAME(value_name)*)\
+
+#define LL_POP_FRONT_PROTO(value_name)\
+	void JOIN3(ll_, value_name, _popfront)(LL_MAIN_STRUCT_NAME(value_name)*)\
+
 #define LL_DELETE_PROTO(value_name)\
 	void JOIN3(ll_, value_name, _delete)(LL_MAIN_STRUCT_NAME(value_name)*, value_name)\
 
@@ -105,6 +111,23 @@
 			n->next = list->head;\
 			list->head = n;\
 		}\
+	}
+#define LL_POP_BACK_IMPL(value_name)\
+	void JOIN3(ll_, value_name, _popback)(LL_MAIN_STRUCT_NAME(value_name) *list) {\
+		LL_NODE_STRUCT_NAME(value_name)* n = list->tail;\
+		if (!n) return;\
+		list->tail = list->tail->prev;\
+		list->tail->next = 0;\
+		FREE(n);\
+	}
+
+#define LL_POP_FRONT_IMPL(value_name)\
+	void JOIN3(ll_, value_name, _popfront)(LL_MAIN_STRUCT_NAME(value_name) *list) {\
+		LL_NODE_STRUCT_NAME(value_name)* n = list->head;\
+		if (!n) return;\
+		list->head = list->head->next;\
+		list->head->prev = 0;\
+		free(n);\
 	}
 
 #define LL_DELETE_IMPL(value_name)\
