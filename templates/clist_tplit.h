@@ -79,6 +79,8 @@
 			n = n->next;\
 			FREE(t);\
 		}\
+		list->head = 0;\
+		list->tail = 0;\
 	}
 
 #define LL_PUSH_BACK_IMPL(value_name)\
