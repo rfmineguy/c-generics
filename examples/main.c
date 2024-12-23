@@ -14,10 +14,13 @@ void list_int() {
 	ll_int_pushback(&list, 6);
 	ll_int_pushfront(&list, 6);
 	ll_int_print(&list);
+	ll_int_popfront(&list);
+	ll_int_popback(&list);
+	ll_int_print(&list);
 	if (ll_int_contains(&list, 3)) {
 		printf("list contains 3\n");
 	}
-	ll_int_delete(&list, 5);
+	// ll_int_delete(&list, 5);
 	ll_int_print(&list);
 	if (!ll_int_contains(&list, 3)) {
 		printf("list doesnt contain 3\n");
